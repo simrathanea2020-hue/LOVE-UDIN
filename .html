@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>លួងសង្សារ - តើអូនស្រឡាញ់បងទេ?</title>
+    <style>
+        /* CSS: សម្រាប់តុបតែងរចនាបថ */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffeef2; /* ពណ៌ផ្កាឈូកស្រាល ឱ្យមានអារម្មណ៍ផ្អែមល្ហែម */
+            font-family: 'Khmer OS Battambang', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+        h1 {
+            color: #d6336c; /* ពណ៌ក្រហមផ្កាឈូកចាស់ ឱ្យមានភាពទាក់ទាញ */
+            text-align: center;
+            padding: 0 20px;
+        }
+        .btn-container {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 20px; /* ប៊ូតុងរាងមូល ឱ្យមានអារម្មណ៍ទន់ភ្លន់ */
+            border: none;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* បន្ថែមស្រមោល ឱ្យមានភាពលេចធ្លោ */
+        }
+        #yesBtn {
+            background-color: #4CAF50; /* ពណ៌បៃតង ឱ្យមានអារម្មណ៍សង្ឃឹម */
+            color: white;
+        }
+        
+        /* ប៊ូតុង "មិនជឿ" នឹងរត់គេច */
+        #noBtn {
+            background-color: #f44336; /* ពណ៌ក្រហម ឱ្យមានអារម្មណ៍ប្រុងប្រយ័ត្ន */
+            color: white;
+            position: absolute;
+            left: 160px;
+        }
+
+        /* បន្ថែមរូបភាពបេះដូងពេលចុចជឿ */
+        #heartImage {
+            display: none;
+            width: 150px;
+            height: 150px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">តើអូនជឿថាបងស្រឡាញ់អូនខ្លាំងដែរទេ?</h1>
+    
+    <div class="btn-container">
+        <button id="yesBtn">ជឿ!</button>
+        <button id="noBtn">មិនជឿ</button>
+    </div>
+
+    <img id="heartImage" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzY0MGVjOTMzZjI3ZDY5ZjgyNzg4OWM4NDdiMTYwZDIzZWRiMjUzOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZl9pZCZjdD1n/l41YcO5rR4L5r8n8I/giphy.gif" alt="រូបបេះដូងលោត">
+
+    <script>
+        // JavaScript: សម្រាប់ Logic បញ្ជាប៊ូតុង
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const question = document.getElementById('question');
+        const heartImage = document.getElementById('heartImage');
+
+        // Logic ពេល Mouse រេទៅជិតប៊ូតុង "មិនជឿ"
+        noBtn.addEventListener('mouseover', () => {
+            // គណនារកទីតាំងថ្មីដោយចៃដន្យ (Random Position) ក្នុងរង្វង់អេក្រង់
+            const x = Math.floor(Math.random() * (window.innerWidth - noBtn.clientWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - noBtn.clientHeight));
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+
+        // Logic ពេលចុចប៊ូតុង "ជឿ!"
+        yesBtn.addEventListener('click', () => {
+            question.innerHTML = "បងជឿថាអូននិងឆ្លើយបែបនេះព្រោះទំនាក់ទំនងយើងគឺល្អណាស់​អូនគឺជាមនុស្សស្រីដ៏គួអោយស្រឡាញ់ជាងគេក្នុងលោកនេះបន្ទាប់ពីម៉ាក់របស់បង💖";
+            document.body.style.backgroundColor = "#ffb3c1"; // ប្តូរពណ៌ Background ឱ្យស៊ីជាមួយបរិយាកាស
+            heartImage.style.display = 'block'; // បង្ហាញរូបបេះដូងលោត
+            noBtn.style.display = 'none'; // បិទប៊ូតុង "មិនជឿ" ចោល
+        });
+    </script>
+
+</body>
+</html>
